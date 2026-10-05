@@ -1,0 +1,10 @@
+--- a/src/widgets/dsearchcombobox.cpp
++++ b/src/widgets/dsearchcombobox.cpp
+@@ -3,6 +3,7 @@
+ // SPDX-License-Identifier: LGPL-3.0-or-later
+ 
+ #include "dsearchcombobox.h"
++#include <QCompleter>
+ #include "private/dsearchcombobox_p.h"
+ 
+ #ifndef emit
