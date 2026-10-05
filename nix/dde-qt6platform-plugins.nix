@@ -5,13 +5,24 @@
   cmake,
   pkg-config,
   qt6,
+  libICE,
+  libSM,
+  libX11,
+  libXext,
+  libXi,
+  libxcb,
+  libxcb-util,
+  libxcb-cursor,
+  libxcb-image,
+  libxcb-keysyms,
+  libxcb-render-util,
+  libxcb-wm,
   runCommand,
   cairo,
   dbus,
   libglvnd,
   libxkbcommon,
   mtdev,
-  xorg,
   dtk5common,
 }:
 
@@ -49,18 +60,18 @@ stdenv.mkDerivation (finalAttrs: {
     libglvnd
     libxkbcommon
     mtdev
-    xorg.libICE
-    xorg.libSM
-    xorg.libX11
-    xorg.libXext
-    xorg.libXi
-    xorg.libxcb
-    xorg.xcbutil
-    xorg.xcbutilcursor
-    xorg.xcbutilimage
-    xorg.xcbutilkeysyms
-    xorg.xcbutilrenderutil
-    xorg.xcbutilwm
+    libICE
+    libSM
+    libX11
+    libXext
+    libXi
+    libxcb
+    libxcb-util
+    libxcb-cursor
+    libxcb-image
+    libxcb-keysyms
+    libxcb-render-util
+    libxcb-wm
   ];
 
   propagatedBuildInputs = [

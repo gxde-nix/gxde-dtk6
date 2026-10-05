@@ -5,8 +5,11 @@
   cmake,
   pkg-config,
   qt6,
+  libX11,
+  libXext,
+  libXi,
+  libxcb-util,
   cups,
-  xorg,
   libstartup_notification,
   dtk6core,
   dtk6gui,
@@ -44,10 +47,10 @@ stdenv.mkDerivation (finalAttrs: {
   buildInputs = [
     cups
     libstartup_notification
-    xorg.libX11
-    xorg.libXext
-    xorg.libXi
-    xorg.xcbutil
+    libX11
+    libXext
+    libXi
+    libxcb-util
     qt6.qtsvg
   ];
 

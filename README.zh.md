@@ -12,13 +12,13 @@ GXDE的DTK6库，请注意本包与Deepin的DTK6冲突。
 | `dtk6declarative` | GXDE-OS/dtk6declarative | tag `6.0.48-gxde1` | `libdtk6declarative.so.6*`、`lib/qt6/qml/…` | `include/dtk6/DDeclarative`、cmake、pc、qmake |
 | `dde-qt6platform-plugins` | GXDE-OS/dde-qt6platform-plugins | tag `6.0.48-1` | `lib/qt-6/plugins/platforms/libdxcb.so` | — |
 | `qt6integration` | GXDE-OS/qt6integration | tag `6.0.35` | `lib/qt-6/plugins/{iconengines,imageformats,platformthemes,styles}` | — |
-| `all` (`default`) | — | — | 全部模块 out+dev 的汇总 | |
+| `all`（`default`、`gxde-dtk6`） | — | — | 七个 DTK6 模块 out+dev 的汇总（不含 `dtk5common`，见说明） | |
 
 ## 说明
 - Qt 6.10/6.11 的兼容补丁取自 GXDE 的 Fedora 打包（`dtk6core` 1 个、`dtk6widget` 2 个），放在 `nix/patches/` 下。
 - nixpkgs 的 `qtbase` 不安装 xcbqpa 私有头，`dde-qt6platform-plugins` 因此从**同版本 Qt 源码**里抽取，而不是用上游 vendored 的旧版本头（最高只到 6.10.2）。
 - 两个插件包的安装路径改为 nixpkgs 的 `qtPluginPrefix`（`lib/qt-6/plugins`），否则 Qt 运行时找不到它们（上游默认写死 `lib/qt6/plugins`）。
-- `dtk5common` 与 [GXDE-NIX/gxde-dtk5](https://gitee.com/gxde-nix/gxde-dtk5) 里的是同一个包（DTK 的 CMake 支持）。
+- `dtk5common` 与 [GXDE-NIX/gxde-dtk5](https://gitee.com/gxde-nix/gxde-dtk5) 里的是同一个包（DTK 的 CMake 支持）；它提供 `lib/cmake/{Dtk,Dtk6,DtkBuildHelper}` 和 `share/dsg/configs`，所以不塞进汇总包 —— 否则 `nix profile add` 同时装 gxde-dtk5 和 gxde-dtk6 会因文件冲突失败。
 
 ## 使用脚本构建
 ### 基本使用

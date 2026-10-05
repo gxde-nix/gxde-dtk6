@@ -33,7 +33,6 @@ let
   };
 
   modules = [
-    dtk5common
     dtk6log
     dtk6core
     dtk6gui
@@ -60,6 +59,8 @@ in
     qt6integration
     all
     ;
+
+  gxde-dtk6 = all;
 
   default = all;
 }

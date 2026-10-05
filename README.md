@@ -12,13 +12,13 @@ GXDE's DTK6 libraries. Please note that this package conflicts with Deepin's DTK
 | `dtk6declarative` | GXDE-OS/dtk6declarative | tag `6.0.48-gxde1` | `libdtk6declarative.so.6*`, `lib/qt6/qml/…` | `include/dtk6/DDeclarative`, cmake, pc, qmake |
 | `dde-qt6platform-plugins` | GXDE-OS/dde-qt6platform-plugins | tag `6.0.48-1` | `lib/qt-6/plugins/platforms/libdxcb.so` | — |
 | `qt6integration` | GXDE-OS/qt6integration | tag `6.0.35` | `lib/qt-6/plugins/{iconengines,imageformats,platformthemes,styles}` | — |
-| `all` (`default`) | — | — | aggregate of every module's out + dev | |
+| `all` (`default`, `gxde-dtk6`) | — | — | aggregate of the seven DTK6 modules' out + dev (`dtk5common` excluded, see Notes) | |
 
 ## Notes
 - The Qt 6.10/6.11 compatibility patches come from GXDE's Fedora packaging (one for `dtk6core`, two for `dtk6widget`) and live in `nix/patches/`.
 - nixpkgs' `qtbase` does not install the xcbqpa private headers, so `dde-qt6platform-plugins` extracts them from the **matching Qt source** instead of using the vendored, older set from upstream (which stops at 6.10.2).
 - Both plugin packages install into nixpkgs' `qtPluginPrefix` (`lib/qt-6/plugins`), otherwise Qt cannot find them at runtime (upstream hardcodes `lib/qt6/plugins`).
-- `dtk5common` is the same package as the one in [GXDE-NIX/gxde-dtk5](https://gitee.com/gxde-nix/gxde-dtk5) (DTK's CMake support).
+- `dtk5common` is the same package as the one in [GXDE-NIX/gxde-dtk5](https://gitee.com/gxde-nix/gxde-dtk5) (DTK's CMake support); because it ships `lib/cmake/{Dtk,Dtk6,DtkBuildHelper}` and `share/dsg/configs`, it is not bundled into the aggregate — otherwise `nix profile add` of both `gxde-dtk5` and `gxde-dtk6` would abort with a file conflict.
 
 ## Building via Script
 ### Basic Instructions

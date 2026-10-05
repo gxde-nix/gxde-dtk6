@@ -5,10 +5,10 @@
   cmake,
   pkg-config,
   qt6,
+  libX11,
   glib,
   libqtxdg,
   mtdev,
-  xorg,
   dtk6widget,
 }:
 
@@ -38,7 +38,7 @@ stdenv.mkDerivation (finalAttrs: {
     libqtxdg
     mtdev
     qt6.qtsvg
-    xorg.libX11
+    libX11
   ];
 
   propagatedBuildInputs = [
